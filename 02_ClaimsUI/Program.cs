@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _02_ClaimsUI
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ProgramUI ui = new ProgramUI();
+            ui.Run();
+
+            DateTime dateOfIncident = DateTime.Now;
+            Console.WriteLine(dateOfIncident.ToShortDateString());
+            Console.ReadLine();
+        }
+    }
+}
