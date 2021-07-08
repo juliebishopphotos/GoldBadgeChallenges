@@ -13,9 +13,6 @@ namespace _02_ClaimsUI
             ProgramUI ui = new ProgramUI();
             ui.Run();
 
-            DateTime dateOfIncident = DateTime.Now;
-            Console.WriteLine(dateOfIncident.ToShortDateString());
-            Console.ReadLine();
         }
     }
 }
