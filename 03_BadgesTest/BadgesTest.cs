@@ -18,5 +18,6 @@ namespace _03_BadgesTest
             Assert.AreEqual(expected, actual);
 
         }
+
     }
 }

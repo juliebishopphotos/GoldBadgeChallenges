@@ -34,18 +34,5 @@ namespace _01_CafeTest
             Assert.IsTrue(directoryHasItem);
         }
 
-
-
-        [TestMethod]
-        public void DeleteMenuItem_ShouldReturnTrue()
-        {
-            //Arrange
-            Menu foundItem = _repo.FindItemByMealNumber(3);
-            //ACT
-            bool removeItem = _repo.DeleteMenuItem(foundItem);
-            //Assert
-            Assert.IsTrue(removeItem);
-
-        }
     }
 }
