@@ -22,6 +22,7 @@ namespace _01_Cafe
         {
             return _menuDirectory;
         }
+
         public Menu FindItemByMealNumber(int mealNumber) 
         {
             foreach (Menu item in _menuDirectory)
@@ -33,7 +34,6 @@ namespace _01_Cafe
             }
             return null;
         }
-
 
         public bool DeleteMenuItem(Menu existingItem)
         {

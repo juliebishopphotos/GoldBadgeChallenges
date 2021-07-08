@@ -80,10 +80,10 @@ namespace _01_CafeUI
             Console.Write("Please enter the meal price: ");
             decimal mealPrice = decimal.Parse(Console.ReadLine());
 
-            Console.Write("Please enter new menu items: ");
-            List<Menu> MenuItems = new List<Menu>();
 
-            _menuRepo.AddItemsToMenu(new Menu(mealName, mealNumber, mealDescription, listOfIngredients, mealPrice, MenuItems));
+            Menu items = new Menu (mealName, mealNumber, mealDescription, listOfIngredients, mealPrice);
+
+            _menuRepo.AddItemsToMenu(items);
         }
 
 
@@ -164,9 +164,9 @@ namespace _01_CafeUI
 
         private void SeedMenuList() 
         {
-            Menu bbqPlate = new Menu("BBQ Plate", 1, "BBQ ribs served with coleslaw and mashed potatoes and gravy.", "BBQ ribs, potatoes, coleslaw and golden gravy", 10.99m, new List<Menu>());
-            Menu fishAndChips = new Menu("Fish & Chips", 2, "Three pieces of breaded fish served with fries and coleslaw.", "Fish, french fries, and coleslaw", 12.99m, new List<Menu>());
-            Menu friedChickenDinner = new Menu("Fried Chicken Dinner", 3, "Fried chicken served with mashed potatoes and green beans.", "Chicken, mashed potatoes, and green beans", 12.99m, new List<Menu>());
+            Menu bbqPlate = new Menu("BBQ Plate", 1, "BBQ ribs served with coleslaw and mashed potatoes and gravy.", "BBQ ribs, potatoes, coleslaw and golden gravy", 10.99m);
+            Menu fishAndChips = new Menu("Fish & Chips", 2, "Three pieces of breaded fish served with fries and coleslaw.", "Fish, french fries, and coleslaw", 12.99m);
+            Menu friedChickenDinner = new Menu("Fried Chicken Dinner", 3, "Fried chicken served with mashed potatoes and green beans.", "Chicken, mashed potatoes, and green beans", 12.99m);
 
             _menuRepo.AddItemsToMenu(bbqPlate);
             _menuRepo.AddItemsToMenu(fishAndChips);

@@ -18,7 +18,7 @@ namespace _02_Claims
             return wasAdded;
         }
 
-        public Queue<Claims> GetClaim() 
+        public Queue<Claims> GetAllClaims() 
         {
             return _claimsDirectory;
         }
@@ -35,10 +35,12 @@ namespace _02_Claims
             return null;
         }
 
-        public Claims DeleteClaim()
+        public bool DeleteClaim()
         {
-            Claims deleteResult = _claimsDirectory.Dequeue();
-            return deleteResult;
+            int startingCount = _claimsDirectory.Count;
+            _claimsDirectory.Dequeue();
+            bool wasDeleted = (_claimsDirectory.Count < startingCount) ? true : false;
+            return wasDeleted;
         }
 
     }

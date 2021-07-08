@@ -16,6 +16,7 @@ namespace _03_BadgesTest
             int actual = newDetails.BadgeID;
 
             Assert.AreEqual(expected, actual);
+
         }
     }
 }

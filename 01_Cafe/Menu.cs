@@ -13,18 +13,17 @@ namespace _01_Cafe
         public string Description { get; set; }
         public string ListOfIngredients { get; set; }
         public decimal Price { get; set; } 
-        public List<Menu> MenuItems { get; set; }
 
         public Menu() { }
 
-        public Menu (string mealName, int mealNumber, string description, string listOfIngredients, decimal price, List<Menu> menuItems)  
+        public Menu (string mealName, int mealNumber, string description, string listOfIngredients, decimal price)  
         {
             MealNumber = mealNumber;
             MealName = mealName;
             Description = description;
             ListOfIngredients = listOfIngredients;
             Price = price;
-            MenuItems = menuItems;
+            
         }
 
     }

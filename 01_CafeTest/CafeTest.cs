@@ -1,6 +1,7 @@
 ﻿using _01_Cafe;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace _01_CafeTest
 {
@@ -8,58 +9,43 @@ namespace _01_CafeTest
     public class CafeTest
     {
         [TestMethod]
-        public void SetMealName_ShouldSetCorrectString()
+        public void AddItemsToMenu_ShouldGetCorrectBoolean()
         {
-            Menu newItem = new Menu();
-            newItem.MealName = "Vegan Plate";
-            string expected = "Vegan Plate";
-            string actual = newItem.MealName;
-
-            Assert.AreEqual(expected, actual);
+            //Arrange
+            Menu newItems = new Menu();
+            MenuRepo repository = new MenuRepo();
+            //Act
+            bool addResult = repository.AddItemsToMenu(newItems);
+            //Assert
+            Assert.IsTrue(addResult);
         }
 
         [TestMethod]
-        public void SetMealNumber_ShouldSetCorrectInt()
+        public void GetDirectory_ShouldReturnCorrectCollection()
         {
-            Menu newItem = new Menu();
-            newItem.MealNumber = 4;
-            int expected = 4;
-            int actual = newItem.MealNumber;
-
-            Assert.AreEqual(expected, actual);
+            //Arrange
+            Menu testItem = new Menu("Vegan Plate", 4, "Vegan seitan steak, grilled asparagus and roasted potatoes.", "Housemade seiten, aparagus, herbed butter, and red potatoes", 10.99m);
+            MenuRepo repo = new MenuRepo();
+            repo.AddItemsToMenu(testItem);
+            //ACT
+            List<Menu> items = repo.GetItem();
+            bool directoryHasItem = items.Contains(testItem);
+            //Assert
+            Assert.IsTrue(directoryHasItem);
         }
 
-        [TestMethod]
-        public void SetDescription_ShouldSetCorrectString()
-        {
-            Menu newItem = new Menu();
-            newItem.Description = "Vegan seitan steak, grilled asparagus and roasted potatoes.";
-            string expected = "Vegan seitan steak, grilled asparagus and roasted potatoes.";
-            string actual = newItem.Description;
 
-            Assert.AreEqual(expected, actual);
-        }
 
         [TestMethod]
-        public void SetListOfIngredients_ShouldSetCorrectString()
+        public void DeleteMenuItem_ShouldReturnTrue()
         {
-            Menu newItem = new Menu();
-            newItem.ListOfIngredients = "Housemade seiten, aparagus, herbed butter, and red potatoes";
-            string expected = "Housemade seiten, aparagus, herbed butter, and red potatoes";
-            string actual = newItem.ListOfIngredients;
+            //Arrange
+            Menu foundItem = _repo.FindItemByMealNumber(3);
+            //ACT
+            bool removeItem = _repo.DeleteMenuItem(foundItem);
+            //Assert
+            Assert.IsTrue(removeItem);
 
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void SetPrice_ShouldSetCorrectDecimal()
-        {
-            Menu newItem = new Menu();
-            newItem.Price = 10.99m;
-            decimal expected = 10.99m;
-            decimal actual = newItem.Price;
-
-            Assert.AreEqual(expected, actual);
         }
     }
 }

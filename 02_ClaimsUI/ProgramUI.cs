@@ -86,9 +86,8 @@ namespace _02_ClaimsUI
             Console.WriteLine("Claim is valid: ");
             bool isValid = bool.Parse(Console.ReadLine());
             
-            Console.Write("Show list of claim: ");
+            
             List<Claims> ListOfClaims = new List<Claims>();
-
 
             _claimsRepo.AddNewClaim(new Claims(claimID, claimType, description, claimAmount, dateOfIncident, dateOfClaim, isValid, ListOfClaims));
         }
@@ -98,7 +97,7 @@ namespace _02_ClaimsUI
         {
             Console.Clear();
 
-            Queue<Claims> ClaimInput = _claimsRepo.GetClaim();
+            Queue<Claims> ClaimInput = _claimsRepo.GetAllClaims();
 
             foreach (Claims input in ClaimInput)
             {
@@ -114,6 +113,9 @@ namespace _02_ClaimsUI
             Console.Clear();
 
             Console.WriteLine("Here are the details for the next claim to be handled:");
+            Queue<Claims> ClaimsInput = _claimsRepo.GetAllClaims();
+            var NextClaim =ClaimsInput.Peek();
+            DisplayInput(NextClaim);
 
             bool DealWithClaim = true;
             while (DealWithClaim)
@@ -122,7 +124,9 @@ namespace _02_ClaimsUI
                 var input = Console.ReadLine();
                 if (input == "y")
                 {
-                    Console.WriteLine("REMOVE");
+                    _claimsRepo.DeleteClaim();
+                    ReduceRed();
+                    return;
                 }
                 if (input == "n")
                 {
